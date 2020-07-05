@@ -22,9 +22,26 @@ class PersonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $data = $request->all();
+        $res = Person::create($data);
+        if ($res){
+
+            return response() -> json([
+                "sucesso" => true,
+                "mensagem" => "Cadastrado com sucesso",
+                "data" => $res -> id
+
+            ]);
+        } 
+        else {
+            return response() -> json([
+                "sucesso" => false,
+                "mensagem" => "Erro ao cadastrar",
+                "data" => null
+            ]);
+        }
     }
 
     /**

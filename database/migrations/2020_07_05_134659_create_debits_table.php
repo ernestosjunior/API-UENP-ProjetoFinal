@@ -15,12 +15,25 @@ class CreateDebitsTable extends Migration
     {
         Schema::create('debits', function (Blueprint $table) {
             $table->id();
-            $table->string('cpfcnpj');
+            $table->string('credor');
             $table->double('valor');
             $table->dateTime('inclusao');
             $table->dateTime('retirada');
+
+            //relação
+            $table->unsignedBigInteger('id_people');
+        
+
             $table->timestamps();
         });
+            
+        Schema::table('debits', function (Blueprint $table) {
+            //criando a relação
+            $table->foreign('id_people')->references('id')->on('people');
+            
+
+        });
+
     }
 
     /**
