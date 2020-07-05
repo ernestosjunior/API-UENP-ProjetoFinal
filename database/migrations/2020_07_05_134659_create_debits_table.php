@@ -15,6 +15,10 @@ class CreateDebitsTable extends Migration
     {
         Schema::create('debits', function (Blueprint $table) {
             $table->id();
+            $table->string('cpfcnpj');
+            $table->double('valor');
+            $table->dateTime('inclusao');
+            $table->dateTime('retirada');
             $table->timestamps();
         });
     }
