@@ -17,8 +17,6 @@ class CreateDebitsTable extends Migration
             $table->id();
             $table->string('credor');
             $table->double('valor');
-            $table->dateTime('inclusao');
-            $table->dateTime('retirada');
             
 
             //relação

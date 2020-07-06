@@ -25,7 +25,7 @@ class DebitController extends Controller
     public function create(Request $request)
     {
         $data = $request->all();
-        $res = Debt::create($data);
+        $res = Debit::create($data);
         if ($res){
 
             return response() -> json([

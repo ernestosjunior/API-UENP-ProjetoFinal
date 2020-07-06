@@ -5,9 +5,16 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+//passport
+use Laravel\Passport\HasApiTokens;
+
 
 class User extends Authenticatable
 {
+    //passport
+    use HasApiTokens, Notifiable;
+    
+
     use Notifiable;
 
     /**

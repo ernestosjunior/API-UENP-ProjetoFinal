@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Debit extends Model
 {
     protected $fillable = [
-        'credor','valor','inclusao','retirada',
+      'cpfcnpj_people', 'credor','valor',
     ];
 
 }
