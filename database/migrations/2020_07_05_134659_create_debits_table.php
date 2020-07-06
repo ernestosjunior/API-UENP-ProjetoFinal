@@ -22,6 +22,8 @@ class CreateDebitsTable extends Migration
 
             //relação
             $table->unsignedBigInteger('id_people');
+            
+        
         
 
             $table->timestamps();
@@ -30,6 +32,8 @@ class CreateDebitsTable extends Migration
         Schema::table('debits', function (Blueprint $table) {
             //criando a relação
             $table->foreign('id_people')->references('id')->on('people');
+            
+            
             
 
         });

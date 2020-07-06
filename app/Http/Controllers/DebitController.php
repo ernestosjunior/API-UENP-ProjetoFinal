@@ -29,16 +29,16 @@ class DebitController extends Controller
         if ($res){
 
             return response() -> json([
-                "sucesso" => true,
-                "mensagem" => "Cadastrado com sucesso",
+                "sucess" => true,
+                "message" => "Cadastrado com sucesso",
                 "data" => $res -> id
 
             ]);
         } 
         else {
             return response() -> json([
-                "sucesso" => false,
-                "mensagem" => "Erro ao cadastrar",
+                "sucess" => false,
+                "message" => "Erro ao cadastrar",
                 "data" => null
             ]);
         }
