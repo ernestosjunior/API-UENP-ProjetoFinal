@@ -19,11 +19,12 @@ class CreateDebitsTable extends Migration
             $table->double('valor');
             $table->dateTime('inclusao');
             $table->dateTime('retirada');
+            
 
             //relação
             $table->unsignedBigInteger('id_people');
+            $table->string('cpfcnpj_people');
             
-        
         
 
             $table->timestamps();
@@ -32,6 +33,8 @@ class CreateDebitsTable extends Migration
         Schema::table('debits', function (Blueprint $table) {
             //criando a relação
             $table->foreign('id_people')->references('id')->on('people');
+            $table->foreign('cpfcnpj_people')->references('cpfcnpj')->on('people');
+          
             
             
             
