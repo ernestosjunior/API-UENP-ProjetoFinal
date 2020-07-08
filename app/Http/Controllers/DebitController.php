@@ -12,9 +12,10 @@ class DebitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $data = $request->query('cpfcnpj_people');
+        return $data;
     }
 
     /**
