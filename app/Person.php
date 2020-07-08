@@ -12,6 +12,6 @@ class Person extends Model
 
     public function debits()
     {
-        return $this->hasMany(Debit::class, 'cpfcnpj_people');
+        return $this->hasMany(Debit::class, 'id_people');
     }
 }
