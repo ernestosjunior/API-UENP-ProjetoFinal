@@ -13,10 +13,9 @@ class DebitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index($idpessoa)
     {
-
-        $debts = Person::with('Debits')->get();
+        $debts = Person::with('Debits')->FindOrFail($idpessoa);
         return ($debts);
         
     }
