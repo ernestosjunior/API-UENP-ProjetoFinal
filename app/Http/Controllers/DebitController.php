@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Person;
 use App\Debit;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,10 @@ class DebitController extends Controller
      */
     public function index(Request $request)
     {
-        $data = $request->query('cpfcnpj_people');
-        return $data;
+
+        $debts = Person::with('Debits')->get();
+        return ($debts);
+        
     }
 
     /**

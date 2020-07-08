@@ -10,7 +10,7 @@ class Person extends Model
         'name', 'cpfcnpj', 
     ];
 
-    public function debit()
+    public function debits()
     {
         return $this->hasMany(Debit::class, 'cpfcnpj_people');
     }

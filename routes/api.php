@@ -21,5 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('incluirpessoa', 'PersonController@create');
 
-Route::get('/consultardebitos/{cpfcnpj_people}', 'DebitController@index');
+Route::get('consultardebitos', 'DebitController@index');
 Route::post('incluirdebito', 'DebitController@create');
