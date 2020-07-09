@@ -8,15 +8,10 @@ use Illuminate\Http\Request;
 
 class DebitController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($idpessoa)
+    public function index(Request $request, $idpessoa)
     {
         $debts = Person::with('Debits')->FindOrFail($idpessoa);
-        return ($debts);
+        return response()->json($debts);
         
     }
 
