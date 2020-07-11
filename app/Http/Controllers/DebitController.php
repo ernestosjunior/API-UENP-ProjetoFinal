@@ -82,9 +82,27 @@ class DebitController extends Controller
      * @param  \App\Debit  $debit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Debit $debit)
+    public function update(Request $request, Debit $debit, $iddebit)
     {
-        //
+        $datadeb = $request->all();
+        $debito = Debit::find($iddebit);
+        $update = $debito->update($datadeb);
+        if ($update){
+
+            return response() -> json([
+                "sucess" => true,
+                "message" => "Débito atualizado com sucesso",
+                "data" => null
+
+            ]);
+        } 
+        else {
+            return response() -> json([
+                "sucess" => false,
+                "message" => "Erro ao atualizar débito",
+                "data" => null
+            ]);
+        }
     }
 
     /**
@@ -97,4 +115,5 @@ class DebitController extends Controller
     {
         //
     }
+   
 }

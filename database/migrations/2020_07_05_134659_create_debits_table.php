@@ -18,6 +18,8 @@ class CreateDebitsTable extends Migration
             $table->string('cpfcnpj');
             $table->string('credor');
             $table->double('valor');
+            $table->boolean('status');
+            
             
 
             //relação

@@ -24,3 +24,4 @@ Route::post('incluirpessoa', 'PersonController@create');
 
 Route::get('consultardebitos/{idpessoa}','DebitController@index');
 Route::post('incluirdebito', 'DebitController@create');
+Route::put('atualizardebito/{iddebit}','DebitController@update');
