@@ -12,9 +12,10 @@ class PersonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, $idpessoa)
     {
-        //
+        $pes = DB::table('people')->FindOrFail($idpessoa);
+        return response()->json($pes);
     }
 
     /**
