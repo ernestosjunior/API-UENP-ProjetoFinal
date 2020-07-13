@@ -98,6 +98,6 @@ class PersonController extends Controller
      */
     public function destroy(Person $person)
     {
-        //
+       //
     }
 }
