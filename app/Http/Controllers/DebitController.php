@@ -111,9 +111,27 @@ class DebitController extends Controller
      * @param  \App\Debit  $debit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Debit $debit)
+    public function destroy(Request $request, Debit $debit, $iddebit)
     {
-        //
+        $deb = Debit::find($iddebit);
+        $exc = $deb->delete();
+        if ($exc){
+
+            return response() -> json([
+                "sucess" => true,
+                "message" => "Débito excluído com sucesso",
+                "data" => null
+
+            ]);
+        } 
+        else {
+            return response() -> json([
+                "sucess" => false,
+                "message" => "Erro ao excluir débito",
+                "data" => null
+            ]);
+        }
+        
     }
    
 }
