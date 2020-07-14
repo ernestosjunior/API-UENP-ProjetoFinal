@@ -114,15 +114,15 @@ class PersonController extends Controller
      * @param  \App\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Person $person, $idpessoa)
+    public function destroy(Request $request, $idusuario)
     {
-        $pers = Person::find($idpessoa);
-        $res = $pers->delete();
+        $usuario = User::find($idusuario);
+        $res = $usuario->delete();
         if ($res){
 
             return response() -> json([
                 "sucess" => true,
-                "message" => "Pessoa e débito(s) deletados com sucesso",
+                "message" => "Usuário deletado com sucesso",
                 "data" => null
 
             ]);
@@ -130,7 +130,7 @@ class PersonController extends Controller
         else {
             return response() -> json([
                 "sucess" => false,
-                "messagem" => "Erro ao deletar os dados",
+                "messagem" => "Erro ao deletar usuário",
                 "data" => null
             ]);
         }
