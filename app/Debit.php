@@ -10,5 +10,9 @@ class Debit extends Model
       'id_people', 'credor','valor','cpfcnpj', 'status',
     ];
 
+    
+    protected $casts = [
+      'status' => 'boolean',
+    ];
 }
  
