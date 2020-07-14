@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('consultarpessoa/{cpfcnpj}','PersonController@index');
 Route::post('cadastrarpessoa', 'PersonController@create');
+Route::put('atualizarpessoa/{idpessoa}','PersonController@update');
 Route::delete('excluirpessoa/{idpessoa}','PersonController@destroy');
 
 

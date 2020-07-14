@@ -85,9 +85,27 @@ class PersonController extends Controller
      * @param  \App\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Person $person)
+    public function update(Request $request, Person $person, $idpessoa)
     {
-        //
+        $dados= $request->all();
+        $per = Person::find($idpessoa);
+        $update = $per->update($dados);
+        if ($update){
+
+            return response() -> json([
+                "sucess" => true,
+                "message" => "Dados da pessoa atualizados com sucesso",
+                "data" => null
+
+            ]);
+        } 
+        else {
+            return response() -> json([
+                "sucess" => false,
+                "message" => "Erro ao atualizar dados",
+                "data" => null
+            ]);
+        }
     }
 
     /**
@@ -105,7 +123,7 @@ class PersonController extends Controller
             return response() -> json([
                 "sucess" => true,
                 "message" => "Pessoa e débito(s) deletados com sucesso",
-                "data" => $res -> id
+                "data" => null
 
             ]);
         } 
