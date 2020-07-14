@@ -19,7 +19,6 @@ class CreatePeopleTable extends Migration
             $table->string('cpfcnpj')->unique();
             $table->string('sobrenome');
             $table->string('sexo');
-            $table->dateTime('nascimento');
             $table->timestamps();
         });
     }

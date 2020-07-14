@@ -20,11 +20,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('consultarpessoa/{cpfcnpj}','PersonController@index');
-Route::post('incluirpessoa', 'PersonController@create');
+Route::post('cadastrarpessoa', 'PersonController@create');
+Route::delete('excluirpessoa/{idpessoa}','PersonController@destroy');
 
 
 
 Route::get('consultardebitos/{idpessoa}','DebitController@index');
-Route::post('incluirdebito', 'DebitController@create');
+Route::post('cadastrardebito', 'DebitController@create');
 Route::put('atualizardebito/{iddebit}','DebitController@update');
 Route::delete('excluirdebito/{iddebit}','DebitController@destroy');
