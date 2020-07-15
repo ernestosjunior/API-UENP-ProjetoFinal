@@ -19,19 +19,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Rotas USUARIO
-
-Route::post('cadastrarusuario', 'UserController@create');
-Route::put('atualizarusuario/{idusuario}','UserController@update');
-Route::delete('excluirusuario/{idusuario}','UserController@destroy');
+Route::post('registrarusuario','UserController@register');
+Route::post('login','UserController@login');
 
 //Rotas PESSOA
-Route::get('consultarpessoa/{cpfcnpj}','PersonController@index');
-Route::post('cadastrarpessoa', 'PersonController@create');
-Route::put('atualizarpessoa/{idpessoa}','PersonController@update');
-Route::delete('excluirpessoa/{idpessoa}','PersonController@destroy');
+Route::group(['middleware' => 'auth:api'], function () { 
+    Route::get('consultarpessoa/{cpfcnpj}','PersonController@index');
+    Route::post('cadastrarpessoa', 'PersonController@create');
+    Route::put('atualizarpessoa/{idpessoa}','PersonController@update');
+    Route::delete('excluirpessoa/{idpessoa}','PersonController@destroy');
+});
 
 //Rotas DEBITOS
-Route::get('consultardebitos/{idpessoa}','DebitController@index');
-Route::post('cadastrardebito', 'DebitController@create');
-Route::put('atualizardebito/{iddebit}','DebitController@update');
-Route::delete('excluirdebito/{iddebit}','DebitController@destroy');
+Route::group(['middleware' => 'auth:api'], function () { 
+    Route::get('consultardebitos/{idpessoa}','DebitController@index');
+    Route::post('cadastrardebito', 'DebitController@create');
+    Route::put('atualizardebito/{iddebit}','DebitController@update');
+    Route::delete('excluirdebito/{iddebit}','DebitController@destroy');        
+});
