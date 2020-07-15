@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use  App\Http\Requests\UserLoginRequest;
 use  App\Http\Requests\UserStoreRequest;
 use  Illuminate\Support\Facades\Auth;
@@ -23,10 +24,10 @@ class UserController extends Controller
 
             ]);
         }
-        $user = Auth::user();
-        $acesstoken = $user->createToken('authToken')->acessToken;
+        $user = Auth::user(); //Recuperando o usuário autenticado
+        $accessToken = $user->createToken('authToken')->accessToken;
         return response() -> json([
-            "message" => "Usuário autenticado com sucesso", $acesstoken
+            "message" => "Usuário autenticado com sucesso", $accessToken
 
         ]);
     }
@@ -34,14 +35,13 @@ class UserController extends Controller
     public function register(UserStoreRequest $request)
     {
         $data = $request->validated();
-        $data['password'] = bcrypt($data['password']);
+        $data['password'] = bcrypt($data['password']); //Criptografia
         $user = User::create($data);
         if ($user){
-            $user->acessToken = $user->createToken('authToken')->acessToken;
+            $user->accessToken = $user->createToken('authToken')->accessToken;
             return response() -> json([
                 "sucess" => true,
-                "message" => "Usuário registrado com sucesso",
-                "data" => $user
+                "message" => "Usuário registrado com sucesso", $user
 
             ]);
         } 
@@ -49,7 +49,6 @@ class UserController extends Controller
             return response() -> json([
                 "sucess" => false,
                 "messagem" => "Erro ao registrar usuário",
-                "data" => null
             ]);
         }
         
