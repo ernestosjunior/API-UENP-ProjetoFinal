@@ -14,7 +14,7 @@ class PersonController extends Controller
      */
     public function index(Request $request, $idpessoa)
     {
-        $pes = Person::FindOrFail($idpessoa);
+        $pes = Person::where('cpfcnpj', $idpessoa)->first();
         return response()->json($pes);
     }
 
