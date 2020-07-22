@@ -12,9 +12,9 @@ class PersonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $idpessoa)
+    public function index(Request $request, $cpfcnpj)
     {
-        $pes = Person::where('cpfcnpj', $idpessoa)->first();
+        $pes = Person::where('cpfcnpj', $cpfcnpj)->first();
         return response()->json($pes);
     }
 

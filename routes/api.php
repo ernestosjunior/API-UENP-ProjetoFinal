@@ -24,7 +24,7 @@ Route::post('login','UserController@login');
 
 //Rotas PESSOA
 #Route::group(['middleware' => 'auth:api'], function () { 
-    Route::get('consultarpessoa/{idpessoa}','PersonController@index');
+    Route::get('consultarpessoa/{cpfcnpj}','PersonController@index');
     Route::post('cadastrarpessoa', 'PersonController@create');
     Route::put('atualizarpessoa/{idpessoa}','PersonController@update');
     Route::delete('excluirpessoa/{idpessoa}','PersonController@destroy');
