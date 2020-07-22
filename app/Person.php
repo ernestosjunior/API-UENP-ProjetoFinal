@@ -14,4 +14,6 @@ class Person extends Model
     {
         return $this->hasMany(Debit::class, 'id_people');
     }
+
+
 }

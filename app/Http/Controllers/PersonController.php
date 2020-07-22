@@ -14,7 +14,7 @@ class PersonController extends Controller
      */
     public function index(Request $request, $idpessoa)
     {
-        $pes = DB::table('people')->FindOrFail($idpessoa);
+        $pes = Person::FindOrFail($idpessoa);
         return response()->json($pes);
     }
 

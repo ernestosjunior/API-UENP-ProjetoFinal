@@ -19,21 +19,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Rotas USUARIO
-Route::post('registrarusuario','UserController@register');
+Route::post('registrar','UserController@register');
 Route::post('login','UserController@login');
 
 //Rotas PESSOA
-Route::group(['middleware' => 'auth:api'], function () { 
-    Route::get('consultarpessoa/{cpfcnpj}','PersonController@index');
+#Route::group(['middleware' => 'auth:api'], function () { 
+    Route::get('consultarpessoa/{idpessoa}','PersonController@index');
     Route::post('cadastrarpessoa', 'PersonController@create');
     Route::put('atualizarpessoa/{idpessoa}','PersonController@update');
     Route::delete('excluirpessoa/{idpessoa}','PersonController@destroy');
-});
+#});
 
 //Rotas DEBITOS
-Route::group(['middleware' => 'auth:api'], function () { 
+#Route::group(['middleware' => 'auth:api'], function () { 
     Route::get('consultardebitos/{idpessoa}','DebitController@index');
     Route::post('cadastrardebito', 'DebitController@create');
     Route::put('atualizardebito/{iddebit}','DebitController@update');
     Route::delete('excluirdebito/{iddebit}','DebitController@destroy');        
-});
+#});

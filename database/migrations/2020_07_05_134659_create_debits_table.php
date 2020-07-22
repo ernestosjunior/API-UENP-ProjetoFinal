@@ -24,7 +24,7 @@ class CreateDebitsTable extends Migration
 
             //relação
             $table->unsignedBigInteger('id_people');
-            #$table->string('cpfcnpj_people');
+            //$table->string('cpfcnpj_people');
             
         
 
@@ -34,7 +34,7 @@ class CreateDebitsTable extends Migration
         Schema::table('debits', function (Blueprint $table) {
             //criando a relação
             $table->foreign('id_people')->references('id')->on('people')->onDelete('cascade');
-            #$table->foreign('cpfcnpj_people')->references('cpfcnpj')->on('people');
+            //$table->foreign('cpfcnpj_people')->references('cpfcnpj')->on('people');
           
             
             
