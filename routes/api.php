@@ -26,13 +26,13 @@ Route::post('login','UserController@login');
 #Route::group(['middleware' => 'auth:api'], function () { 
     Route::get('consultarpessoa/{cpfcnpj}','PersonController@index');
     Route::post('cadastrarpessoa', 'PersonController@create');
-    Route::put('atualizarpessoa/{idpessoa}','PersonController@update');
-    Route::delete('excluirpessoa/{idpessoa}','PersonController@destroy');
+    Route::put('atualizarpessoa/{cpfcnpj}','PersonController@update');
+    Route::delete('excluirpessoa/{cpfcnpj}','PersonController@destroy');
 #});
 
 //Rotas DEBITOS
 #Route::group(['middleware' => 'auth:api'], function () { 
-    Route::get('consultardebitos/{idpessoa}','DebitController@index');
+    Route::get('consultardebitos/{cpfcnpj}','DebitController@index');
     Route::post('cadastrardebito', 'DebitController@create');
     Route::put('atualizardebito/{iddebit}','DebitController@update');
     Route::delete('excluirdebito/{iddebit}','DebitController@destroy');        

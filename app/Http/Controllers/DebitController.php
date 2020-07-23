@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class DebitController extends Controller
 {
-    public function index(Request $request, $idpessoa)
+    public function index(Request $request, $cpfcnpj)
     {
-        $debts = Person::with('Debits')->FindOrFail($idpessoa);
+        $debts = Person::with('Debits')->where('cpfcnpj', $cpfcnpj)->first();
         return response()->json($debts);
         
     }

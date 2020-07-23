@@ -85,10 +85,10 @@ class PersonController extends Controller
      * @param  \App\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Person $person, $idpessoa)
+    public function update(Request $request, Person $person, $cpfcnpj)
     {
         $dados= $request->all();
-        $per = Person::find($idpessoa);
+        $per = Person::where('cpfcnpj', $cpfcnpj)->first();
         $update = $per->update($dados);
         if ($update){
 
@@ -114,15 +114,15 @@ class PersonController extends Controller
      * @param  \App\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $idusuario)
+    public function destroy(Request $request, $cpfcnpj)
     {
-        $usuario = User::find($idusuario);
+        $usuario = Person::with('Debits')->where('cpfcnpj', $cpfcnpj)->first();
         $res = $usuario->delete();
         if ($res){
 
             return response() -> json([
                 "sucess" => true,
-                "message" => "Usuário deletado com sucesso",
+                "message" => "Pessoa e débitos deletado com sucesso",
                 "data" => null
 
             ]);
@@ -130,7 +130,7 @@ class PersonController extends Controller
         else {
             return response() -> json([
                 "sucess" => false,
-                "messagem" => "Erro ao deletar usuário",
+                "messagem" => "Erro ao deletar pessoa e debitos",
                 "data" => null
             ]);
         }
